@@ -11,25 +11,10 @@ function App() {
     const { value, name } = event.target;
 
     setContact(prevalue => {
-      if (name === "fName") {
-        return {
-          fName: value,
-          lName: prevalue.lName,
-          email: prevalue.email
-        };
-      } else if (name === "lName") {
-        return {
-          fName: prevalue.fName,
-          lName: value,
-          email: prevalue.email
-        };
-      } else {
-        return {
-          fName: prevalue.fName,
-          lName: prevalue.lName,
-          email: value
-        };
-      }
+      return {
+        ...prevalue, //using spread operator
+        [name]: value //change name key with value in contact object
+      };
     });
   }
 
